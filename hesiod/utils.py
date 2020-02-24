@@ -1,19 +1,7 @@
 import os, shutil
 
-from enum import Enum
-from config import TMP_PATH
-
-
-class PlayerStatus(Enum):
-    FIRST_ADDED = 1
-    SUCCESSFULLY_ADDED = 2
-    LIST_IS_FULL = 3
-    LIST_IS_EMPTY = 4
-    SONG_SKIPPED = 5
-    SONG_NOT_SKIPPED = 6
-
-def clear_tmp():
-    folder = TMP_PATH
+def clear_folder(path):
+    folder = path
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
@@ -26,5 +14,5 @@ def clear_tmp():
 
 def convert_mb(bytes: int) -> int:
     # Converts bytes to mb
-    kb = (bytes // 1024)
+    kb = (bytes / 1024)
     return  kb // 1024
